@@ -54,7 +54,7 @@ class Program
 
         else
         {
-            Console.Writeline("You failed");
+            Console.WriteLine("You failed!");
         }
 
 
