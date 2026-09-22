@@ -23,5 +23,17 @@ class Program
         {
             Console.WriteLine("Default output");
         }
+
+        // Convert string to number
+        //string numberString = "123";
+        //int myNumber = int.Parse(numberString);
+        //Console.WriteLine(myNumber);
+
+
+        // Convert number to string
+        //int number = 100;
+        //string stringNumber = number.ToString();
+        //Console.WriteLine(stringNumber);
+
     }
 }
