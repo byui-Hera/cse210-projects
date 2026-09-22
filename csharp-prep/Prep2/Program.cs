@@ -9,6 +9,7 @@ class Program
         string answer = Console.ReadLine();
         int percentage = int.Parse(answer);
 
+
         string letter = "";
 
 
