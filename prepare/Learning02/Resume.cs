@@ -9,7 +9,6 @@ class Resume
 
     public void Display()
     {
-
         Console.WriteLine($"Name: {_name}");
         Console.WriteLine("Jobs:");
 
