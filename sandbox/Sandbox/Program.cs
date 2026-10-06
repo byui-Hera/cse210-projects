@@ -34,6 +34,4 @@ class Program
     // DisplayGreeting(myName);
     // double total = AddNumbers(12.234, 20);
     // Console.WriteLine(total);
-
-
 }
