@@ -7,8 +7,6 @@ public class Journal
         _entries.Add(entry);
     }
 
-
-
     public void DisplayAll()
     {
         if (_entries.Count == 0)
@@ -28,9 +26,9 @@ public class Journal
     {
         List<Entry> matches = _entries
             .Where(entry =>
-                entry.date.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                entry.prompt.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
-                entry.response.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
+                entry.Date.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                entry.Prompt.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ||
+                entry.Response.Contains(searchTerm, StringComparison.OrdinalIgnoreCase))
             .ToList();
 
         if (matches.Count == 0)
@@ -45,20 +43,16 @@ public class Journal
         }
     }
 
-
-
     public void SaveToFile(string filename)
     {
         using StreamWriter writer = new StreamWriter(filename);
 
         foreach (Entry entry in _entries)
         {
-            writer.WriteLine($"{entry.date}|{entry.prompt}|{entry.response}");
+            writer.WriteLine($"{entry.Date}|{entry.Prompt}|{entry.Response}");
         }
         Console.WriteLine("Journal saved.");
     }
-
-
 
     public void LoadFromFile(string filename)
     {

@@ -18,7 +18,6 @@ class Program
             "What is something I want to remember about today?"
         };
 
-
         Random random = new Random();
         string choice = "";
 
@@ -39,7 +38,7 @@ class Program
             if (choice == "1")
             {
                 string date = DateTime.Now.ToString("yyyy-MM-dd");
-                
+
                 string prompt = prompts[random.Next(prompts.Count)];
                 Console.WriteLine(prompt);
                 Console.Write("> ");
@@ -96,6 +95,5 @@ class Program
                 Console.WriteLine("Please choose a number from 1 to 6.");
             }
         }
-        Console.WriteLine();
     }
 }
