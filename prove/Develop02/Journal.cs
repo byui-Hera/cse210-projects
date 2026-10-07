@@ -43,6 +43,7 @@ public class Journal
         }
     }
 
+
     public void SaveToFile(string filename)
     {
         using StreamWriter writer = new StreamWriter(filename);
@@ -53,6 +54,7 @@ public class Journal
         }
         Console.WriteLine("Journal saved.");
     }
+
 
     public void LoadFromFile(string filename)
     {
