@@ -1,0 +1,34 @@
+class Word
+{
+    private string _text;
+    private bool _isHidden;
+
+
+    public Word(string text)
+    {
+        this._text = text;
+        _isHidden = false;
+    }
+
+
+    public void Hide()
+    {
+        _isHidden = true;
+    }
+
+
+    public bool isHidden()
+    {
+        return _isHidden;
+    }
+
+
+    public string GetDisplayText()
+    {
+        if (_isHidden)
+        {
+            return new string('_', _text.Length);
+        }
+        return _text;
+    }
+}
