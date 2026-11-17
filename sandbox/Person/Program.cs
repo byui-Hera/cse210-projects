@@ -1,100 +1,81 @@
-﻿using System;
-
-class Program
+﻿class Program
 {
-    public static void Main()
+    public static void DisplayPersonInformation(Person person)
     {
-        Person myPerson = new Person("Hera", "Hysi", 20, 144.02);
-        Console.WriteLine(myPerson.GetPersonInformation());
-
-        Doctor myDoctor = new Doctor("Dorjan", "Hysi", 49, 170.02, "Periodontal probe");
-        Console.WriteLine(myDoctor.GetPersonInformation());
-        Console.WriteLine(myDoctor.GetDoctorInformation());
-
-        Police myPolice = new Police("Gary", "Goodman", 61, 180.0, "gun");
-        Console.WriteLine(myPolice.GetPersonInformation());
-        Console.WriteLine(myPolice.GetPoliceInformation());
-
-
-
-        // Method 2
-        // List<Person> myPeople = new List<Person>();
-        // myPeople.Add(myPerson);
-        // myPeople.Add(myDoctor);
-        // myPeople.Add(myPolice);
-
-
-        // Method 3
-        //     List<Person> myPeople = new List<Person>
-        //     {
-        //         new Person("Hera", "Hysi", 20, 144.02),
-        //         new Doctor("Dorjan", "Hysi", 49, 170.02, "periodontal probe"),
-        //         new Police("Gary", "Goodman", 61, 181, "Guns")
-        //     };
-
-        //     foreach(Person person in myPeople)
-        //     {
-        //         Console.WriteLine(person.GetPersonInformation());
-        //     }
-        // }
+        Console.WriteLine(person.GetPersonInformation());
     }
 
-
-    class Person
+    public static void Main()
     {
-        private string _firstName;
-        private string _lastName;
-        private int _age;
-        private double _weight;
+        Person myPerson = new("Hera", "Hysi", 20, 144.02);
 
+        Doctor myDoctor = new("Dorjan", "Hysi", 49, 170.02, "Periodontal probe");
+
+        Police myPolice = new("Gary", "Goodman", 61, 180.0, "gun");
+
+        System.Collections.Generic.List<Person> myPeople = new()
+        {
+            myPerson,
+            myDoctor,
+            myPolice
+        };
+
+        foreach (Person person in myPeople)
+        {
+            DisplayPersonInformation(person);
+        }
+    }
+
+    public class Person
+    {
+        private readonly string _firstName;
+        private readonly string _lastName;
+        private readonly int _age;
+        private readonly double _weight;
 
         public Person(string firstName, string lastName, int age, double weight)
         {
-            this._firstName = firstName;
-            this._lastName = lastName;
-            this._age = age;
-            this._weight = weight;
+            _firstName = firstName;
+            _lastName = lastName;
+            _age = age;
+            _weight = weight;
         }
 
-
-        public string GetPersonInformation()
+        public virtual string GetPersonInformation()
         {
             return $"{_firstName} {_lastName} is {_age} years old and weighs {_weight}";
         }
     }
 
-
-
-    class Doctor : Person
+    public class Doctor : Person
     {
-        private string _tools;
+        private readonly string _tools;
 
-        public Doctor(string firstName, string lastName, int age, double weight, string tools) : base(firstName, lastName, age, weight)
+        public Doctor(string firstName, string lastName, int age, double weight, string tools)
+            : base(firstName, lastName, age, weight)
         {
             _tools = tools;
         }
 
-
-        public string GetDoctorInformation()
+        public override string GetPersonInformation()
         {
-            return $"{_tools} : {GetPersonInformation()}";
+            return $"{_tools} : {base.GetPersonInformation()}";
         }
     }
 
-
-    class Police : Person
+    public class Police : Person
     {
-        private string _weapons;
+        private readonly string _weapons;
 
-        public Police(string firstName, string lastName, int age, double weight, string weapons) : base(firstName, lastName, age, weight)
+        public Police(string firstName, string lastName, int age, double weight, string weapons)
+            : base(firstName, lastName, age, weight)
         {
             _weapons = weapons;
         }
 
-
-        public string GetPoliceInformation()
+        public override string GetPersonInformation()
         {
-            return $"Police: Weapons: {_weapons} : {GetPersonInformation()}";
+            return $"Police: Weapons: {_weapons} : {base.GetPersonInformation()}";
         }
     }
 }
